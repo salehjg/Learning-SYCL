@@ -2,7 +2,7 @@
 #include <CL/sycl.hpp>
 
 int main(int argc, char *argv[]) {
-    constexpr const size_t N = 1024; //2GB
+    constexpr const size_t N = 1024*1024*256; //2GB
     const sycl::range VecSize{N};
 
     sycl::buffer<double> bufA{VecSize};
@@ -20,8 +20,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    sycl::device d = sycl::device(sycl::cpu_selector_v);
-    std::cout << "Max Compute Units: " <<d.get_info<sycl::info::device::max_compute_units>() << std::endl;
+    sycl::device d = sycl::device(sycl::default_selector_v);
+
+    std::cout << "Device: " << std::endl;
+    std::cout << "\tName: " <<d.get_info<sycl::info::device::name>() << std::endl;
+    std::cout << "\tMax Compute Units: " <<d.get_info<sycl::info::device::max_compute_units>() << std::endl;
     sycl::queue myQueue{d};
 
     auto cg = [&](sycl::handler &h) {
