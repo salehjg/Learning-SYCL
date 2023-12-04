@@ -3,23 +3,15 @@
 ## Queues
 
 ```mermaid
-graph LR;
-  Q[Queues]-->IO[In-order];
-  Q-->OoO[Out-of-order];
-  OoO-->OooI[Implicit Ordering];
-  OoO-->OooE[Explicit Ordering];
-```
-
-```mermaid
 mindmap
   root((Queues)
     id(In-order)
     id(Out-of-order)
       id(Implicit)
-        id(Using Accessors)
+        id("Using sycl::accessor<>")
       id(Explicit)
-        id(Using depends_on)
-        id(Using wait)
+        id("Using handler::depends_on()")
+        id("Using event::wait()")
 ```
 
 ### In-order
