@@ -3,15 +3,11 @@
 ## Queues
 
 ```mermaid
-mindmap
-  root((Queues)
-    In-order
-    Out-of-order
-      Implicit
-        Using Accessors
-      Explicit
-        Using "depends_on"
-        Using wait
+graph LR;
+  Queues-->InOrder;
+  Queues-->OutOfOrder;
+  OutOfOrder-->Implicit;
+  OutOfOrder-->Explicit;
 ```
 
 ### In-order
