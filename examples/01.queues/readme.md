@@ -4,10 +4,10 @@
 
 ```mermaid
 graph TD;
-  Queues-->In-order;
-  Queues-->Out-of-order;
-  Out-of-order-->Implicit Ordering;
-  Out-of-order-->Explicit Ordering;
+  Queues-->InOrder;
+  Queues-->OutOfOrder;
+  OutOfOrder-->Implicit;
+  OutOfOrder-->Explicit;
 ```
 
 ### In-order
