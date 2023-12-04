@@ -10,7 +10,7 @@ mindmap
       Implicit
         Using Accessors
       Explicit
-        Using depends_on
+        Using "depends_on"
         Using wait
 ```
 
