@@ -3,11 +3,16 @@
 ## Queues
 
 ```mermaid
-graph TD;
-  Queues-->InOrder;
-  Queues-->OutOfOrder;
-  OutOfOrder-->Implicit;
-  OutOfOrder-->Explicit;
+mindmap
+  root((Queues))
+    In-order
+    Out-of-order
+      Implicit
+        Using sycl::accessor
+      Explicit
+        Using handler::depends_on
+        Using event::wait
+        ...
 ```
 
 ### In-order
