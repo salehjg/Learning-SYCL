@@ -15,3 +15,4 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
 endif()
 
 add_subdirectory(examples/00.helloworld.cmake)
+add_subdirectory(examples/01.queues)
