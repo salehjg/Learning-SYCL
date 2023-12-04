@@ -4,15 +4,14 @@
 
 ```mermaid
 mindmap
-  root((Queues))
-    "In-order"
-    "Out-of-order"
+  root((Queues)
+    In-order
+    Out-of-order
       Implicit
-        "Using sycl::accessor"
+        Using Accessors
       Explicit
-        "Using handler::depends_on"
-        "Using event::wait"
-        "..."
+        Using depends_on
+        Using wait
 ```
 
 ### In-order
