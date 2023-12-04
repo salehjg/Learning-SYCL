@@ -4,10 +4,22 @@
 
 ```mermaid
 graph LR;
-  Queues-->InOrder;
-  Queues-->OutOfOrder;
-  OutOfOrder-->Implicit;
-  OutOfOrder-->Explicit;
+  Q[Queues]-->IO[In-order];
+  Q-->OoO[Out-of-order];
+  OoO-->OooI[Implicit Ordering];
+  OoO-->OooE[Explicit Ordering];
+```
+
+```mermaid
+mindmap
+  root((Queues)
+    id(In-order)
+    id(Out-of-order)
+      id(Implicit)
+        id(Using Accessors)
+      id(Explicit)
+        id(Using depends_on)
+        id(Using wait)
 ```
 
 ### In-order
