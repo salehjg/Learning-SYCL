@@ -73,6 +73,7 @@ My `RTX3060` is not visible.
 `ext_cuda` does not work with my `RTX3060`. Maybe I have to set some options for the compiler.
 
 ### General Notes
+
 #### Note 1
 
 From [Intel Forum](https://community.intel.com/t5/Intel-oneAPI-Base-Toolkit/Difference-between-SyCL-host-device-and-CPU/m-p/1242376):  
@@ -80,7 +81,7 @@ Although host_selector and cpu_selector both select the CPU hardware there is a 
 When you are using cpu_selector then your code runs on CPU hardware with OpenCL as backend. So the CPU act as an OpenCL
 device here.
 Whereas, when you are using host_selector then it bypasses the OnenCL backend and runs directly on CPU hardware. To run
-your codes using host_selector you don't need to have OpenCL drivers and it is always available, whereas to run your
+your codes using host_selector you don't need to have OpenCL drivers, and it is always available, whereas to run your
 codes on any OpenCL devices (CPU, GPU, FPGA, any accelerator that supports OpenCL).
 
 #### Note 2
@@ -97,3 +98,20 @@ solve this:
 2. Use a custom `selector` class that scores any other device type to zero.
 3. **[NOT SURE ABOUT THIS]** Use `cpu_selector_v` instead. Although, it might use CPU as an OpenCL device. _The effect
    of using OpenCL as the backend for debugging with `gdb-oneapi` is vague for me._
+
+## Code Structure
+
+### Command Group (CFG)
+
+Consists of host code and only one call to a device method (one of the members of the `sycl::handler`). More than one
+call to the device functions will result in error.
+Also, only one CFG could be submitted into a queue at a time. Every submission constructs nodes and edges of Task
+Graph.  
+The host code in a CFG may be a bunch of `sycl::accessor<>` instances to allow SYCL to manage data dependencies and
+movements internally.  
+The device function that is called in a CFG could
+be `handler.single_task`, `handler.parallel_for`, `parallel_for_work_group`, `copy`, `update_host`, and `fill`.
+I have not compared these with the new SYCL2020 yet, but they should still be valid.  
+So the host code inside a CFG is just sequential CPU code and is blocking. Anything that is called from the handler (as
+a device function) is asyc and non-blocking and will be run once the DAG node dependencies have been met.  
+

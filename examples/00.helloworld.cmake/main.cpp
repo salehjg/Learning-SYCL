@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Device: " << std::endl;
     std::cout << "\tName: " <<d.get_info<sycl::info::device::name>() << std::endl;
     std::cout << "\tMax Compute Units: " <<d.get_info<sycl::info::device::max_compute_units>() << std::endl;
-    sycl::queue myQueue{d};
+    sycl::queue myQueue{d, sycl::property::queue::in_order()};
 
     auto cg = [&](sycl::handler &h) {
         const auto read_t = sycl::access::mode::read;
