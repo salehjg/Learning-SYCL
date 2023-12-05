@@ -16,3 +16,4 @@ endif()
 
 add_subdirectory(examples/00.helloworld.cmake)
 add_subdirectory(examples/01.queues)
+add_subdirectory(examples/02.kernels)
