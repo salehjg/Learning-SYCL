@@ -31,4 +31,24 @@ mindmap
 
 ```
 
-### 
+## ND Range vs. CUDA
+
+For a lambda ND kernel such as:
+
+```
+[=](sycl::nd_item<2> item) {
+    ...
+}
+```
+
+| CUDA                                  | SYCL                    |
+|---------------------------------------|-------------------------|
+| threadIdx.x                           | item.get_local_id(0)    |
+| blockIdx.x * blockDim.x + threadIdx.x | item.get_global_id(0)   |
+| blockIdx.x                            | item.get_group(0)       |
+| blockDim.x                            | item.get_local_range(0) |
+| gridDim.x                             | item.get_group_range(0) |
+
+So, when `*range` is used as a suffix, it refers to that quantity's size.
+
+###     
