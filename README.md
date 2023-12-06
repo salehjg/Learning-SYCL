@@ -8,6 +8,8 @@ My journey in learning SYCL from scratch!
 [Learning SYCL by porting CUDA codes](https://sycl.tech/assets/files/Zheming_Jin_ORNL_Porting_CUDA_SYCL_Buffers.pdf)  
 [oneAPI SYCL vs. CUDA](https://oneapi-src.github.io/SYCLomatic/dev_guide/compare-prog-models.html)  
 [CodePlay - Migrating from CUDA to SYCL](https://developer.codeplay.com/products/computecpp/ce/2.10.0/guides/sycl-for-cuda-developers/migration)  
+[SYCLomatic - oneAPI CUDA to SYCL translator](https://github.com/oneapi-src/SYCLomatic)  
+
 
 # Init
 ## Step 1
