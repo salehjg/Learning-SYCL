@@ -43,9 +43,18 @@ int main(int argc, char *argv[]) {
     std::cout << "\tName: " << d.get_info<sycl::info::device::name>() << std::endl;
     std::cout << "\tMax Compute Units: " << d.get_info<sycl::info::device::max_compute_units>() << std::endl;
 
+    // auto has_local_mem = (d.get_info<sycl::info::device::local_mem_type>() != sycl::info::local_mem_type::none);
+    // auto local_mem_size = d.get_info<sycl::info::device::local_mem_size>();
+    // if (!has_local_mem || local_mem_size < (B * sizeof(double))) {
+    //     throw std::runtime_error("Device doesn't have enough local memory!");
+    // }
+
+
     sycl::queue q{d, sycl::property::queue::in_order()}; // In-order Queue
 
     auto event1 = q.submit([&](sycl::handler &h) {
+        //sycl::local_accessor<double, 2> smem{sycl::range<2>{2,2,}, h};
+
         auto a = bufA.get_access<sycl::access::mode::read>(h);
         auto b = bufB.get_access<sycl::access::mode::read>(h);
         auto c = bufC.get_access<sycl::access::mode::write>(h);
@@ -53,9 +62,11 @@ int main(int argc, char *argv[]) {
         sycl::range global{N, N};
         sycl::range local{B, B};
 
-        h.parallel_for(sycl::nd_range{global, local}, [=](sycl::nd_item<2> itm) {
-            auto j = itm.get_global_id(0);
-            auto i = itm.get_global_id(1);
+        h.parallel_for(sycl::nd_range{global, local}, [=](sycl::nd_item<2> nd_item) {
+            auto j = nd_item.get_global_id(0);
+            auto i = nd_item.get_global_id(1);
+
+            // nd_item.barrier(); // syncthreads in sycl, refer to https://developer.codeplay.com/products/computecpp/ce/2.10.0/guides/sycl-for-cuda-developers/migration
 
             double sum = 0;
             for (unsigned k = 0; k < N; k++) {

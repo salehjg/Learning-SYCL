@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.23.5 FATAL_ERROR)
 
 set(CMAKE_C_COMPILER icx)
 set(CMAKE_CXX_COMPILER icpx)
+set(CMAKE_CXX_STANDARD 17)
 
 project(LearningSYCL LANGUAGES CXX)
 find_package(IntelSYCL REQUIRED)
