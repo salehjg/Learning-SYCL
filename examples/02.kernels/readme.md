@@ -51,8 +51,8 @@ For a lambda ND kernel such as:
 
 So, when `*range` is used as a suffix, it refers to that quantity's size. 
   
-**Be careful when dealing with 2D and 3D blocks** and grids, since axes are defined differently.  
+**Be careful when dealing with 2D and 3D blocks** and grids, since the axes are defined differently.  
 For SYCL, we have `nd_item` where axis=0 is used as the most valuable axis while axis=-1 is used as the least valuable
-axis. To put it into perspective, for CUDA, `threadIdx.x` is the least valuable axis and `threadIdx.z` is the most
+axis. To put it into perspective, for CUDA, `threadIdx.x` is the least valuable axis, and `threadIdx.z` is the most
 valuable axis.
 
