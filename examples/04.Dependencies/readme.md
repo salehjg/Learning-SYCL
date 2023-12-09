@@ -13,3 +13,25 @@ root(("Dependencies In A Command Group")
 ```
 
 
+```mermaid
+mindmap
+root(("Command Group")
+  id("To run a kernel")
+    id("queue::submit()")
+    id("queue::parallel_for()")
+    id("queue::single_task()")
+  id("To move data")
+    id("Implicitly")
+      id("USM")
+      id("Buffers + Accessors")
+    id("Explicitly")
+      id("USM")
+        id("queue::memcpy()")
+        id("handler::memcpy()")
+      id("Buffers")
+        id("handler::copy() to move data between the host memory and an accessor.")
+        id("handler::update_host() to update the actual host pointer of the buffer in the host memory.")
+```
+
+
+
