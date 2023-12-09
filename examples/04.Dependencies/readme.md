@@ -1,5 +1,6 @@
 # Example 04: Dependencies and Schedule
 
+## Dependencies and Command Groups
 ```mermaid
 mindmap
 root(("Dependencies In A Command Group")
@@ -12,7 +13,7 @@ root(("Dependencies In A Command Group")
     id("Implicitly with Accessors")
 ```
 
-
+## Command Groups and Data Movements
 ```mermaid
 mindmap
 root(("Command Group")
@@ -33,6 +34,7 @@ root(("Command Group")
         id("handler::update_host() to update the actual host pointer of the buffer in the host memory. See footnote 1.")
 ```
 
+## Host Thread Synchronization
 ```mermaid
 mindmap
 root(("Synchronization")
@@ -41,6 +43,9 @@ root(("Synchronization")
     id("event1.wait()")
     id("host accessors for buffers. See footnote 2, 3, and 4.")
 ```
+
+**Footnotes:  **
+
 
 1. From DPCPP book: *"The update_host method is a very specialized form of copy. If a buffer was created around a host pointer, this method will copy the data represented by the accessor back to the original host memory. This can be useful if a program manually synchronizes host data with a buffer that was created with the special use_mutex property. However, this use case is not likely to occur in most programs."*
 
