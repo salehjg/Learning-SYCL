@@ -3,7 +3,7 @@
 ## Dependencies and Command Groups
 ```mermaid
 mindmap
-root(("Dependencies In A Command Group")
+root(("Dependencies In A Command Group"))
   id("In-order Queue")
     id("One task after another = Implicitly Defined Dependencies.")
   id("Out-of-order Queue")
@@ -16,7 +16,7 @@ root(("Dependencies In A Command Group")
 ## Command Groups and Data Movements
 ```mermaid
 mindmap
-root(("Command Group")
+root(("Command Group"))
   id("To run a kernel")
     id("queue::submit()")
     id("queue::parallel_for()")
@@ -37,7 +37,7 @@ root(("Command Group")
 ## Host Thread Synchronization
 ```mermaid
 mindmap
-root(("Synchronization")
+root(("Synchronization"))
   id("Host Thread")
     id("queue::wait() and queue::wait_and_throw()")
     id("event1.wait()")

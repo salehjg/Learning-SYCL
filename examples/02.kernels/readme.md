@@ -4,7 +4,7 @@
 
 ```mermaid
 mindmap
-  root((Kernels)
+  root((Kernels))
     id(Basic)
       id("Notes")
         id("No access to local buffers (shared memory in CUDA)")

@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
             auto i = nd_item.get_global_id(1);
 
             // nd_item.barrier(); // syncthreads in sycl, refer to https://developer.codeplay.com/products/computecpp/ce/2.10.0/guides/sycl-for-cuda-developers/migration
-
+            sycl::group_broadcast()
             double sum = 0;
             for (unsigned k = 0; k < N; k++) {
                 sum += a[j][k] * b[k][i];

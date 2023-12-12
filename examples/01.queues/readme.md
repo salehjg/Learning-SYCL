@@ -4,7 +4,7 @@
 
 ```mermaid
 mindmap
-  root((Queues)
+  root((Queues))
     id(In-order)
     id(Out-of-order)
       id(Implicit)
