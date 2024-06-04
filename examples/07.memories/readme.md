@@ -41,6 +41,8 @@ Be aware that both the host and the device can access this type of allocated mem
 This is practically the sycl version of cuda malloc. It allocates a memory that resides on the device global memory and only the device can access it.  
 For moving data from a heap C++ array to a device memory pointer, you need to use `sycl::queue::memcpy(dest, src, size_in_bytes)`.
 
+For a great comparison on the achievable performance for these three approaches, please refer to `SYCL-Bench 2020: Benchmarking SYCL 2020 on AMD, Intel, and NVIDIA GPUs` paper, Figure 3. You can access [the preprint here](https://cosenza.eu/papers/CrisciIWOCL24.pdf).
+
 
 ## Local
 TODO.
